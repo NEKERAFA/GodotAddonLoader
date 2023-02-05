@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://AddonLoader.gd" type="Script" id=1]
+[ext_resource path="res://MainScene.gd" type="Script" id=2]
+
+[node name="MainScene" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="AddonsContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="PlaceholderAddon" type="Label" parent="AddonsContainer"]
+margin_right = 1024.0
+margin_bottom = 14.0
+text = "Addons loaded:"
+
+[node name="AddonLoader" type="Node" parent="."]
+script = ExtResource( 1 )
+
+[connection signal="addon_loaded" from="AddonLoader" to="." method="_on_Addon_Loader_addon_loaded"]
